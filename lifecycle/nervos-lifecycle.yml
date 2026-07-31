@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/nervosnetwork/ckb/releases + https://github.com/nervosnetwork/rfcs
+versioning:
+  scheme: semver-release
+  detail: >-
+    CKB node software and its RPC schema are versioned via tagged GitHub releases
+    (semantic versioning). Protocol-level changes go through the CKB RFC process before
+    activation (often via hard-fork epochs, e.g. the CKB2021 / CKB2023 hard forks).
+  releases: https://github.com/nervosnetwork/ckb/releases
+  rfcs: https://github.com/nervosnetwork/rfcs
+deprecation:
+  policy: >-
+    Deprecated JSON-RPC methods are first gated behind explicit node configuration flags
+    (rpc.extra_modules / deprecation opt-in) so integrators must consciously re-enable
+    them, then removed in a later release. Protocol changes are announced through RFCs
+    and release notes ahead of hard-fork activation epochs.
+  policy_url: https://github.com/nervosnetwork/ckb/releases
+status_page: null
+sla: null
+deprecated_operations: []
+note: >-
+  No hosted status page was found for the public community RPC endpoints; the docs
+  explicitly state public RPC nodes may be unstable and should not be used for production.

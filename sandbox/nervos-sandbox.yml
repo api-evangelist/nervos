@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.nervos.org/docs/getting-started/ckb-networks + https://docs.nervos.org/docs/getting-started/rpcs
+note: >-
+  CKB provides full test/dev separation through distinct networks rather than test API
+  keys. Values below are published verbatim in the docs; no secrets are invented.
+networks:
+  - name: mainnet
+    kind: production
+    rpc:
+      - https://mainnet.ckb.dev/
+      - https://mainnet.ckbapp.dev/
+      - https://rpc.ankr.com/nervos
+    address_prefix: ckb
+    explorer: https://explorer.nervos.org/
+  - name: testnet
+    kind: test
+    aka: Pudge
+    rpc:
+      - https://testnet.ckb.dev/
+      - https://testnet.ckbapp.dev/
+    address_prefix: ckt
+    explorer: https://testnet.explorer.nervos.org/
+    faucet: https://faucet.nervos.org/
+  - name: devnet
+    kind: local
+    tooling: "@offckb/cli"
+    detail: >-
+      OffCKB (npm install -g @offckb/cli) spins up a local single-node CKB devnet with
+      pre-funded accounts for offline development and script deployment.
+default_ports:
+  http_rpc: 8114
+  tcp: 18114
+  websocket: 18115

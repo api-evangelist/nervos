@@ -1,0 +1,86 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/nervosnetwork/ckb/blob/master/rpc/README.md
+format: json-rpc-2.0
+note: >-
+  CKB exposes errors as JSON-RPC 2.0 error objects ({jsonrpc, id, error:{code, message, data}}).
+  There is no OpenAPI to derive from; this registry is captured verbatim from the CKB RPCError
+  enumeration documented in the node's rpc/README.md. Codes are stable, negative integers.
+  Transaction-pool rejections are surfaced under the Pool* / TransactionFailedTo* variants and
+  carry a human-readable reason in error.data.
+envelope:
+  shape: '{ jsonrpc: "2.0", id, error: { code: <int>, message: <string>, data: <string?> } }'
+  code_field: error.code
+  message_field: error.message
+  detail_field: error.data
+errors:
+  - code: -1
+    variant: CKBInternalError
+    meaning: An internal error, usually an unexpected panic or unhandled failure in the node.
+    action: Retry later; report to node operator if persistent.
+  - code: -2
+    variant: Deprecated
+    meaning: The RPC method has been deprecated and is disabled or scheduled for removal.
+    action: Migrate to the replacement method; see lifecycle/nervos-lifecycle.yml.
+  - code: -3
+    variant: Invalid
+    meaning: The request parameters were malformed or failed validation.
+    action: Fix the request parameters against the RPC schema.
+  - code: -4
+    variant: RPCModuleIsDisabled
+    meaning: The RPC module serving this method is not enabled on the target node.
+    action: Enable the module in the node ckb.toml rpc.modules, or use a node/provider that exposes it.
+  - code: -5
+    variant: DaoError
+    meaning: An error occurred while processing a Nervos DAO operation.
+    action: Verify the DAO cell/deposit state and inputs.
+  - code: -6
+    variant: Indexer
+    meaning: An error occurred in the built-in indexer.
+    action: Ensure the indexer module is enabled and synced.
+  - code: -7
+    variant: NotFound
+    meaning: The requested resource (block, transaction, cell, header) was not found.
+    action: Confirm the identifier/hash exists on the target chain and node tip.
+  - code: -8
+    variant: Disconnected
+    meaning: The subscription connection has been dropped by the server.
+    action: Reconnect the TCP/WebSocket subscription and re-subscribe.
+  - code: -101
+    variant: P2PFailedToBroadcast
+    meaning: The node failed to broadcast the transaction to the P2P network.
+    action: Retry submission; check node peer connectivity.
+  - code: -201
+    variant: ChainIndexIsInconsistent
+    meaning: The chain index is inconsistent with the underlying database.
+    action: Operator action - rebuild the index / resync the node.
+  - code: -202
+    variant: DatabaseIsCorrupt
+    meaning: The node database is corrupt.
+    action: Operator action - restore or resync the node database.
+  - code: -301
+    variant: TransactionFailedToResolve
+    meaning: The transaction inputs could not be resolved (missing/spent cells, dead inputs).
+    action: Rebuild the transaction with live inputs; refresh cell state.
+  - code: -302
+    variant: TransactionFailedToVerify
+    meaning: The transaction failed script/consensus verification.
+    action: Fix the offending lock/type script, capacity, or signature; inspect error.data for the failing reason.
+  - code: -1000
+    variant: AlertFailedToVerifySignatures
+    meaning: A network alert message failed signature verification.
+    action: No client action; alert is rejected by the node.
+pool_rejection_reasons:
+  note: >-
+    Transaction-pool rejections are reported (typically under TransactionFailedToVerify /
+    Invalid) with one of these reasons in error.data.
+  reasons:
+    - PoolRejectedTransactionByOutputsValidator
+    - PoolRejectedTransactionByMinFeeRate
+    - PoolRejectedTransactionByMaxAncestorsCountLimit
+    - PoolIsFull
+    - PoolRejectedDuplicatedTransaction
+    - PoolRejectedMalformedTransaction
+cross_links:
+  conventions: conventions/nervos-conventions.yml
+  lifecycle: lifecycle/nervos-lifecycle.yml

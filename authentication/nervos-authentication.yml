@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.nervos.org/docs/getting-started/rpcs
+summary:
+  types: [none]
+  note: >-
+    The CKB JSON-RPC API is an unauthenticated, public JSON-RPC 2.0 interface. Public
+    RPC endpoints (mainnet.ckb.dev, testnet.ckb.dev, rpc.ankr.com/nervos) require no
+    API key, token, or OAuth. Security is provided at the protocol layer: state changes
+    are authorized by CKB lock scripts and signatures inside transactions (witnesses),
+    not by an API credential. Operators running their own public RPC node are advised
+    to restrict method exposure and place the node behind a reverse proxy / rate limiter.
+schemes: []
+transaction_authorization:
+  model: script-based
+  detail: >-
+    Spending a Cell requires satisfying its lock script (e.g. Secp256k1/blake160,
+    Omnilock, Anyone-Can-Pay). Signatures are supplied off-chain in the transaction
+    witness and verified on-chain by CKB-VM. See docs how-to "How to Sign a Transaction".

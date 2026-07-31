@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.nervos.org/docs/getting-started/rpcs + https://github.com/nervosnetwork/ckb/blob/master/rpc/README.md
+protocol:
+  style: JSON-RPC 2.0
+  transports:
+    - {name: http, note: "Default RPC over HTTP POST to the node RPC port (mainnet 8114 / testnet varies)."}
+    - {name: tcp, note: "TCP subscription/RPC, default port 18114."}
+    - {name: websocket, note: "WebSocket subscription, default port 18115 - used for the subscribe method (new_tip_header/new_tip_block/new_transaction)."}
+  request_shape:
+    fields: [jsonrpc, id, method, params]
+    example_method: get_tip_block_number
+  response_shape:
+    success_fields: [jsonrpc, id, result]
+    error_fields: [jsonrpc, id, error]
+authentication:
+  style: none
+  ref: authentication/nervos-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    JSON-RPC 2.0 has no idempotency-key mechanism. Read methods are naturally idempotent;
+    send_transaction is idempotent at the ledger level because a transaction is identified
+    by its deterministic transaction hash - resubmitting the same signed transaction does
+    not create a duplicate.
+pagination:
+  style: cursor
+  note: >-
+    Indexer/search methods (e.g. get_cells, get_transactions on the CKB indexer RPC)
+    paginate with an order + limit + after cursor; the response returns a last_cursor
+    to pass as after on the next call.
+versioning:
+  scheme: release-tagged
+  note: >-
+    RPC schema is versioned with CKB node releases; deprecated RPC methods are gated
+    behind explicit node config flags before removal. See lifecycle/nervos-lifecycle.yml.
+error_envelope:
+  ref: errors/nervos-error-codes.yml
+  note: >-
+    No OpenAPI; errors surface as JSON-RPC 2.0 error objects with code + message + data.
+    The full CKB RPCError registry is captured in errors/nervos-error-codes.yml.
+rate_limiting:
+  note: >-
+    Public community RPC nodes may rate-limit or be unstable and are explicitly not
+    recommended for production; run a dedicated node or use a commercial RPC provider
+    for guaranteed throughput.
+cross_links:
+  authentication: authentication/nervos-authentication.yml
+  lifecycle: lifecycle/nervos-lifecycle.yml
+  conformance: conformance/nervos-conformance.yml

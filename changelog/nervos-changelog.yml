@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/nervosnetwork/ckb/releases
+note: >-
+  CKB node releases are the source of truth for the RPC/protocol surface - the JSON-RPC schema
+  is versioned with node releases (see lifecycle/nervos-lifecycle.yml). This captures the recent
+  release window from the nervosnetwork/ckb GitHub Releases feed; pre-release (rc) tags are
+  marked. Full notes and asset checksums live on each GitHub release page.
+scheme: semver
+tag_prefix: v
+current_version: v0.208.0
+release_feed: https://github.com/nervosnetwork/ckb/releases
+entries:
+  - version: v0.208.0
+    date: '2026-07-15'
+    prerelease: false
+    name: ckb 0.208.0 (585395c 2026-07-14)
+    url: https://github.com/nervosnetwork/ckb/releases/tag/v0.208.0
+  - version: v0.207.0
+    date: '2026-06-10'
+    prerelease: false
+    name: ckb 0.207.0 (8f6cacf 2026-06-10)
+    url: https://github.com/nervosnetwork/ckb/releases/tag/v0.207.0
+  - version: v0.207.0-rc1
+    date: '2026-06-09'
+    prerelease: true
+    name: ckb 0.207.0-rc1 (2d0fb7f 2026-06-09)
+    url: https://github.com/nervosnetwork/ckb/releases/tag/v0.207.0-rc1
+  - version: v0.206.0
+    date: '2026-05-06'
+    prerelease: false
+    name: ckb 0.206.0 (2c91814 2026-05-06)
+    url: https://github.com/nervosnetwork/ckb/releases/tag/v0.206.0
+  - version: v0.206.0-rc1
+    date: '2026-04-29'
+    prerelease: true
+    name: ckb 0.206.0-rc1 (132e0ad 2026-04-28)
+    url: https://github.com/nervosnetwork/ckb/releases/tag/v0.206.0-rc1
+  - version: v0.205.0
+    date: '2026-03-18'
+    prerelease: false
+    name: ckb 0.205.0 (b75a785 2026-03-17)
+    url: https://github.com/nervosnetwork/ckb/releases/tag/v0.205.0

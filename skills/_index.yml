@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.nervos.org/docs/ai-agents/ai-resource
+note: >-
+  Nervos CKB documents a packaged agent skill for CKB development on its official AI
+  Resources page. The skill itself is a community-maintained repository (referenced from
+  the official docs), so it is cataloged here by reference rather than vendored - there
+  is no OpenAPI in this repo to ground newly generated skills in (CKB exposes JSON-RPC).
+skills:
+  - name: CKB Dev Skills
+    kind: provider-referenced
+    repo: https://github.com/joii2020/ckb-dev-skills
+    branch: dev.v0.1-2
+    status: alpha
+    description: >-
+      Packages CKB-specific development guidance into an agent skill covering dApp
+      integration, on-chain Script development, testing, debugging, and deployment.
+    docs: https://docs.nervos.org/docs/ai-agents/ai-resource
+  - name: CKB Agent Instructions
+    kind: agent-instructions
+    description: >-
+      Official recommended AGENTS.md / CLAUDE.md / Cursor Rules content that points agents
+      at the official docs as source of truth and encodes tool-selection defaults and
+      verification practices for CKB.
+    docs: https://docs.nervos.org/docs/ai-agents/ai-resource
+starter_prompts:
+  - "Build a Wallet Transfer dApp - minimal frontend dApp with wallet connection, CKB transfer, and signing."
+  - "Write, Test, and Deploy a CKB Script - Lock/Type Script development with a testing and deployment strategy."

@@ -1,8 +1,28 @@
 aid: nervos
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nervos.png
 name: Nervos
-description: 'Nervos is a company surfaced as a portfolio company of multicoin-capital and added to the
-  API Evangelist network as a stub for enrichment. Sector: crypto-web3. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Nervos is the organization behind Nervos CKB (Common Knowledge Base), a proof-of-work
+  layer 1 blockchain built around the Cell Model - a flexible, UTXO-like state model - and
+  CKB-VM, a RISC-V virtual machine for on-chain scripts. Developers interact with the
+  network through a public JSON-RPC 2.0 API (HTTP, TCP, and WebSocket subscriptions),
+  official SDKs for JavaScript/TypeScript (CCC), Rust, Go, and Java, and CLI tooling
+  (ckb-cli, OffCKB). The docs surface first-class AI resources including an llms.txt map,
+  agent instructions, packaged CKB Dev Skills, and a CKB AI MCP server. Nervos was
+  surfaced as a portfolio company of Multicoin Capital and enriched from its public
+  developer documentation.
 url: https://raw.githubusercontent.com/api-evangelist/nervos/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,11 +32,38 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Crypto Web3
-apis: []
+- Blockchain
+- Layer 1
+- JSON-RPC
+- Smart Contracts
+- Web3 Infrastructure
+- Developer Tools
+apis:
+- name: CKB JSON-RPC API
+  description: >-
+    Public JSON-RPC 2.0 interface to Nervos CKB nodes for querying chain state (blocks,
+    transactions, cells), submitting signed transactions, and subscribing to new-tip
+    events over WebSocket. Unauthenticated on public endpoints; transaction authorization
+    is enforced on-chain by lock scripts and signatures.
+  humanURL: https://docs.nervos.org/docs/getting-started/rpcs
+  baseURL: https://mainnet.ckb.dev/
+  tags:
+  - JSON-RPC
+  - Blockchain
+  - Web3
+  properties:
+  - type: Documentation
+    url: https://docs.nervos.org/docs/getting-started/rpcs
+  - type: APIReference
+    url: https://github.com/nervosnetwork/ckb/blob/master/rpc/README.md
+  - type: Authentication
+    url: authentication/nervos-authentication.yml
+  - type: Conventions
+    url: conventions/nervos-conventions.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +72,53 @@ maintainers:
 common:
 - type: Website
   url: https://nervos.org
+- type: Documentation
+  url: https://docs.nervos.org/
+- type: GettingStarted
+  url: https://docs.nervos.org/docs/getting-started/quick-start
+- type: APIReference
+  url: https://github.com/nervosnetwork/ckb/blob/master/rpc/README.md
+- type: GitHubOrganization
+  url: https://github.com/nervosnetwork
+- type: ChangeLog
+  url: https://github.com/nervosnetwork/ckb/releases
+- type: Packages
+  url: packages/nervos-packages.yml
+- type: SDKs
+  url: packages/nervos-packages.yml
+- type: CLI
+  url: cli/nervos-cli.yml
+- type: MCPServer
+  url: mcp/nervos-mcp.yml
+- type: LLMsTxt
+  url: llms/nervos-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Authentication
+  url: authentication/nervos-authentication.yml
+- type: Conventions
+  url: conventions/nervos-conventions.yml
+- type: Lifecycle
+  url: lifecycle/nervos-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/nervos-lifecycle.yml
+- type: Conformance
+  url: conformance/nervos-conformance.yml
+- type: Sandbox
+  url: sandbox/nervos-sandbox.yml
+- type: WellKnown
+  url: well-known/nervos-well-known.yml
+- type: DomainSecurity
+  url: security/nervos-domain-security.yml
+- type: ErrorCatalog
+  url: errors/nervos-error-codes.yml
+- type: Webhooks
+  url: asyncapi/nervos-ckb-subscriptions.yml
+- type: ChangeLog
+  name: CKB node releases (structured)
+  url: changelog/nervos-changelog.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 3
+  pass: local-v1

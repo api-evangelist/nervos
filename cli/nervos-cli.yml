@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.nervos.org/docs/sdk-and-devtool
+clis:
+  - name: ckb-cli
+    repo: https://github.com/nervosnetwork/ckb-cli
+    description: "Official CKB command-line interface - wallet management, transaction construction/signing, and RPC access to a CKB node."
+    official: true
+    install:
+      - "cargo install --git https://github.com/nervosnetwork/ckb-cli"
+    surface:
+      - group: account
+        purpose: "Manage local accounts / keys."
+      - group: wallet
+        purpose: "Transfer capacity, query balances, build transactions."
+      - group: rpc
+        purpose: "Call any CKB JSON-RPC method against a node."
+      - group: tx
+        purpose: "Construct, sign, and send raw transactions."
+      - group: util
+        purpose: "Address/key conversions and helper utilities."
+  - name: offckb
+    package: "@offckb/cli"
+    repo: https://github.com/ckb-devrel/offckb
+    description: "One-line local CKB devnet plus dApp/script project scaffolding, funded test accounts, and deployment helpers."
+    official: true
+    install:
+      - "npm install -g @offckb/cli"
+    surface:
+      - group: node
+        purpose: "Start/stop a local CKB devnet."
+      - group: accounts
+        purpose: "List pre-funded devnet accounts and private keys."
+      - group: create
+        purpose: "Scaffold a dApp or on-chain script project."
+      - group: deploy
+        purpose: "Deploy compiled scripts to devnet/testnet."
+  - name: ckb-debugger
+    repo: https://github.com/nervosnetwork/ckb-standalone-debugger
+    description: "Standalone CKB-VM debugger for running and debugging on-chain scripts off-node."
+    official: true

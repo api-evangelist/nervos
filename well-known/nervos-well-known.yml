@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of docs/website/RPC hosts
+note: >-
+  Nervos CKB publishes no /.well-known discovery documents on its docs, website, or
+  public RPC hosts. Absence recorded is valid data. CKB public RPC is unauthenticated
+  JSON-RPC 2.0, so there is no OAuth/OIDC discovery surface.
+hosts:
+  - host: https://docs.nervos.org
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://nervos.org
+    documents:
+      - path: /.well-known/security.txt
+        status: none
+  - host: https://mainnet.ckb.dev
+    documents:
+      - path: /.well-known/openid-configuration
+        status: none

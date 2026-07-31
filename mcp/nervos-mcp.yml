@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.nervos.org/docs/ai-agents/ai-resource
+note: >-
+  The CKB AI MCP server is a community-built server (alpha) documented on the official
+  Nervos CKB docs AI Resources page. It is not maintained by the Nervos Foundation
+  core team; it exposes CKB documentation context to coding agents.
+server:
+  name: ckb-ai
+  transport: http
+  url: https://mcp.ckbdev.com/ckbai
+  status_note: "alpha, under active development"
+  source_repo: https://github.com/sonami-tech/ckb-mcp
+  local_default_port: 3112
+install:
+  claude_code: "claude mcp add --transport http ckb-ai https://mcp.ckbdev.com/ckbai"
+  codex: "codex mcp add ckb-ai --url https://mcp.ckbdev.com/ckbai"
+tools: []

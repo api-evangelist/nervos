@@ -1,0 +1,58 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.nervos.org/docs/sdk-and-devtool + public package registries
+packages:
+  - language: javascript
+    registry: npm
+    name: "@ckb-ccc/core"
+    url: https://www.npmjs.com/package/@ckb-ccc/core
+    version: 1.17.0
+    install: npm install @ckb-ccc/core
+    description: "Core of CCC (CKBer's Codebase) - the main JavaScript/TypeScript SDK for building CKB dApps."
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@ckb-ccc/ccc"
+    url: https://www.npmjs.com/package/@ckb-ccc/ccc
+    version: 1.2.4
+    install: npm install @ckb-ccc/ccc
+    description: "CCC full bundle (core + connectors) for JavaScript/TypeScript CKB applications."
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@offckb/cli"
+    url: https://www.npmjs.com/package/@offckb/cli
+    version: 0.4.8
+    install: npm install -g @offckb/cli
+    description: "OffCKB - one-line CKB local devnet + dApp scaffolding CLI (maintained by ckb-devrel)."
+    official: true
+  - language: rust
+    registry: crates.io
+    name: ckb-sdk
+    url: https://crates.io/crates/ckb-sdk
+    version: 5.1.0
+    install: "cargo add ckb-sdk"
+    description: "Rust SDK for CKB - transaction building, signing, and RPC client."
+    official: true
+  - language: rust
+    registry: crates.io
+    name: ckb-std
+    url: https://crates.io/crates/ckb-std
+    version: 1.1.0
+    install: "cargo add ckb-std"
+    description: "Standard library for writing CKB on-chain scripts (contracts) in Rust."
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/nervosnetwork/ckb-sdk-go
+    url: https://pkg.go.dev/github.com/nervosnetwork/ckb-sdk-go/v2
+    source: https://github.com/nervosnetwork/ckb-sdk-go
+    install: "go get github.com/nervosnetwork/ckb-sdk-go/v2"
+    description: "Go SDK for CKB (listed as an official SDK on docs.nervos.org)."
+    official: true
+  - language: java
+    registry: maven
+    name: org.nervos.ckb
+    source: https://github.com/nervosnetwork/ckb-sdk-java
+    description: "Java SDK for CKB (listed as an official SDK on docs.nervos.org). Published under the org.nervos.ckb group."
+    official: true

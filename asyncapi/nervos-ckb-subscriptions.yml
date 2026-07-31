@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.nervos.org/docs/getting-started/rpcs + https://github.com/nervosnetwork/ckb/blob/master/rpc/README.md
+spec_type: Webhooks
+note: >-
+  CKB exposes a real event/streaming surface via the JSON-RPC Subscription module, delivered
+  over full-duplex TCP and WebSocket connections (not plain HTTP). A client calls the
+  `subscribe` method with a topic name and receives a subscription id, then the node pushes
+  `subscribe` notifications carrying the topic payload until the client calls `unsubscribe`.
+  This is a server-push pub/sub surface (the CKB equivalent of webhooks), not an HTTP callback
+  system - the provider ships no AsyncAPI document, so this captures the event catalog verbatim.
+transport:
+  style: json-rpc-2.0-pubsub
+  channels:
+    - {name: tcp, default_port: 18114}
+    - {name: websocket, default_port: 18115}
+  subscribe_method: subscribe
+  unsubscribe_method: unsubscribe
+  delivery: >-
+    After subscribe returns a subscription id, the node emits JSON-RPC notifications with
+    method "subscribe" whose params contain {subscription: <id>, result: <topic payload>}.
+topics:
+  - name: new_tip_header
+    description: Emitted when a new block header becomes the chain tip. Payload is the new tip Header.
+  - name: new_tip_block
+    description: Emitted when a new block becomes the chain tip. Payload is the new tip Block.
+  - name: new_transaction
+    description: Emitted when a new transaction is accepted into the memory pool. Payload is the pool transaction entry.
+  - name: proposed_transaction
+    description: Emitted when a transaction is proposed in a block. Payload is the proposed transaction entry.
+examples:
+  subscribe_request: '{"id": 2, "jsonrpc": "2.0", "method": "subscribe", "params": ["new_tip_header"]}'
+  unsubscribe_request: '{"id": 2, "jsonrpc": "2.0", "method": "unsubscribe", "params": ["<subscription_id>"]}'
+cross_links:
+  conventions: conventions/nervos-conventions.yml
+  errors: errors/nervos-error-codes.yml

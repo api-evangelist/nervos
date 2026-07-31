@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.nervos.org/docs/getting-started/rpcs
+standards:
+  - id: json-rpc-2.0
+    conforms: true
+    evidence: "CKB API is a JSON-RPC 2.0 interface (jsonrpc/id/method/params request, result/error response)."
+  - id: websocket-subscriptions
+    conforms: true
+    evidence: "subscribe method delivers new_tip_header/new_tip_block/new_transaction events over WebSocket (default port 18115)."
+  - id: openapi
+    conforms: false
+    evidence: "No OpenAPI/Swagger description is published; the RPC is documented as a JSON-RPC method reference (rpc/README.md)."
+  - id: oauth2
+    conforms: false
+    evidence: "Public RPC is unauthenticated; no OAuth2."
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: "Errors use the JSON-RPC 2.0 error object, not application/problem+json."
+  - id: rest
+    conforms: false
+    evidence: "RPC-style API, not resource-oriented REST."
+note: >-
+  No third-party security/compliance certifications (SOC 2, ISO 27001, PCI, etc.) are
+  published for the protocol or the community RPC endpoints - this is a public,
+  permissionless blockchain protocol, so no Compliance pointer is emitted.
