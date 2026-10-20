@@ -1,0 +1,1662 @@
+{
+  "endpoint": "https://mcp.ckbdev.com/ckbai",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "ckb-ai-mcp",
+    "version": "1.6.13"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "rpc_get_block",
+        "title": "Get Block",
+        "description": "[Read-only] Retrieve complete block with all transactions. For header only: rpc_get_header.",
+        "inputSchema": {
+          "properties": {
+            "block_hash": {
+              "description": "Block hash (0x-prefixed, 64 hex characters)",
+              "type": "string"
+            }
+          },
+          "required": [
+            "block_hash"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_block_by_number",
+        "title": "Get Block by Number",
+        "description": "[Read-only] Retrieve complete block by number. For header only: rpc_get_header_by_number.",
+        "inputSchema": {
+          "properties": {
+            "block_number": {
+              "description": "Block number",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "block_number"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_header",
+        "title": "Get Header",
+        "description": "[Read-only] Retrieve block header without transactions. For full block: rpc_get_block.",
+        "inputSchema": {
+          "properties": {
+            "block_hash": {
+              "description": "Block hash",
+              "type": "string"
+            }
+          },
+          "required": [
+            "block_hash"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_header_by_number",
+        "title": "Get Header by Number",
+        "description": "[Read-only] Retrieve block header by number. For full block: rpc_get_block_by_number.",
+        "inputSchema": {
+          "properties": {
+            "block_number": {
+              "description": "Block number",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "block_number"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_transaction",
+        "title": "Get Transaction",
+        "description": "[Read-only] Retrieve transaction data and status by hash. For pending txs: rpc_get_pool_tx_detail.",
+        "inputSchema": {
+          "properties": {
+            "tx_hash": {
+              "description": "Transaction hash",
+              "type": "string"
+            }
+          },
+          "required": [
+            "tx_hash"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_block_hash",
+        "title": "Get Block Hash",
+        "description": "[Read-only] Convert block number to hash. For full block data: rpc_get_block_by_number.",
+        "inputSchema": {
+          "properties": {
+            "block_number": {
+              "description": "Block number",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "block_number"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_tip_header",
+        "title": "Get Tip Header",
+        "description": "[Read-only] Get latest block header from chain tip. For block number only: rpc_get_tip_block_number.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_tip_block_number",
+        "title": "Get Tip Block Number",
+        "description": "[Read-only] Get current chain height. For full header: rpc_get_tip_header.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_current_epoch",
+        "title": "Get Current Epoch",
+        "description": "[Read-only] Get current epoch number, start block, and length. For historical: rpc_get_epoch_by_number.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_epoch_by_number",
+        "title": "Get Epoch by Number",
+        "description": "[Read-only] Get historical epoch details. For current epoch: rpc_get_current_epoch.",
+        "inputSchema": {
+          "properties": {
+            "epoch_number": {
+              "description": "Epoch number",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "epoch_number"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_live_cell",
+        "title": "Get Live Cell",
+        "description": "[Read-only] Get single cell by outpoint. For bulk queries: rpc_search_cells.",
+        "inputSchema": {
+          "properties": {
+            "index": {
+              "description": "Output index",
+              "type": "integer"
+            },
+            "tx_hash": {
+              "description": "Transaction hash",
+              "type": "string"
+            },
+            "with_data": {
+              "default": false,
+              "description": "Include cell data",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "tx_hash",
+            "index"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_fork_block",
+        "title": "Get Fork Block",
+        "description": "[Read-only] Get orphaned block from chain reorganization. For canonical blocks: rpc_get_block.",
+        "inputSchema": {
+          "properties": {
+            "block_hash": {
+              "description": "Fork block hash",
+              "type": "string"
+            },
+            "verbosity": {
+              "description": "Result format: 0 (hex string) or 2 (JSON object, default)",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "block_hash"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_indexer_tip",
+        "title": "Get Indexer Tip",
+        "description": "[Read-only] Get indexer sync status. Check before using rpc_search_cells or rpc_search_transactions.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_search_cells",
+        "title": "Search Cells",
+        "description": "[Read-only] Search cells by script criteria with full filter control. For total capacity: rpc_get_cells_capacity.",
+        "inputSchema": {
+          "properties": {
+            "after_cursor": {
+              "description": "Pagination cursor (optional)",
+              "type": "string"
+            },
+            "limit": {
+              "default": 100,
+              "description": "Maximum number of results",
+              "type": "integer"
+            },
+            "order": {
+              "default": "asc",
+              "description": "Sort order",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            },
+            "search_key": {
+              "description": "Search criteria (script, script_type, filter, etc.)",
+              "type": "object"
+            }
+          },
+          "required": [
+            "search_key"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_search_transactions",
+        "title": "Search Transactions",
+        "description": "[Read-only] Search transaction history by script. For single tx: rpc_get_transaction.",
+        "inputSchema": {
+          "properties": {
+            "after_cursor": {
+              "description": "Pagination cursor (optional)",
+              "type": "string"
+            },
+            "group_by_transaction": {
+              "default": false,
+              "description": "Group results by transaction hash",
+              "type": "boolean"
+            },
+            "limit": {
+              "default": 100,
+              "description": "Maximum number of results",
+              "type": "integer"
+            },
+            "order": {
+              "default": "asc",
+              "description": "Sort order",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            },
+            "search_key": {
+              "description": "Search criteria",
+              "type": "object"
+            }
+          },
+          "required": [
+            "search_key"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_cells_capacity",
+        "title": "Get Cells Capacity",
+        "description": "[Read-only] Get total capacity of matching cells. For cell details: rpc_search_cells.",
+        "inputSchema": {
+          "properties": {
+            "search_key": {
+              "description": "Search criteria",
+              "type": "object"
+            }
+          },
+          "required": [
+            "search_key"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_submit_transaction",
+        "title": "Submit Transaction",
+        "description": "[Modifies state] Submit transaction to network for inclusion. Validate first with rpc_test_transaction.",
+        "inputSchema": {
+          "properties": {
+            "outputs_validator": {
+              "default": "passthrough",
+              "description": "Outputs validator mode",
+              "enum": [
+                "passthrough",
+                "well_known_scripts_only"
+              ],
+              "type": "string"
+            },
+            "tx": {
+              "description": "Transaction object to send",
+              "type": "object"
+            }
+          },
+          "required": [
+            "tx"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "rpc_test_transaction",
+        "title": "Test Transaction",
+        "description": "[Read-only] Dry-run transaction validation without broadcasting. Use before rpc_submit_transaction.",
+        "inputSchema": {
+          "properties": {
+            "outputs_validator": {
+              "default": "passthrough",
+              "description": "Outputs validator mode",
+              "enum": [
+                "passthrough",
+                "well_known_scripts_only"
+              ],
+              "type": "string"
+            },
+            "tx": {
+              "description": "Transaction object to test",
+              "type": "object"
+            }
+          },
+          "required": [
+            "tx"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_node_info",
+        "title": "Get Node Info",
+        "description": "[Read-only] Get node version, protocols, and addresses. For sync status: rpc_get_sync_state.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_sync_state",
+        "title": "Get Sync State",
+        "description": "[Read-only] Get chain sync progress and IBD status. For node info: rpc_get_node_info.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_peers",
+        "title": "Get Peers",
+        "description": "[Read-only] Get connected peer addresses and protocols. For node status: rpc_get_node_info.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_pool_info",
+        "title": "Get Pool Info",
+        "description": "[Read-only] Get mempool size, limits, and fee statistics. For pending txs: rpc_get_pool_transactions.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_pool_ready",
+        "title": "Get Pool Ready",
+        "description": "[Read-only] Check if mempool is ready. Call before rpc_submit_transaction.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_pool_transactions",
+        "title": "Get Pool Transactions",
+        "description": "[Read-only] List all pending transaction hashes. For tx details: rpc_get_pool_tx_detail.",
+        "inputSchema": {
+          "properties": {
+            "verbose": {
+              "default": false,
+              "description": "True for detailed JSON, false for array of tx IDs",
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_pool_tx_detail",
+        "title": "Get Pool TX Detail",
+        "description": "[Read-only] Get pending transaction details including fee and ancestors. For committed: rpc_get_transaction.",
+        "inputSchema": {
+          "properties": {
+            "tx_hash": {
+              "description": "Hash of transaction to query",
+              "type": "string"
+            }
+          },
+          "required": [
+            "tx_hash"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_blockchain_info",
+        "title": "Get Blockchain Info",
+        "description": "[Read-only] Get chain type (mainnet/testnet), difficulty, and alerts. For consensus: rpc_get_consensus.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_consensus",
+        "title": "Get Consensus",
+        "description": "[Read-only] Get consensus rules, block intervals, and reward parameters. For forks: rpc_get_deployments.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_deployments",
+        "title": "Get Deployments",
+        "description": "[Read-only] Get soft fork activation status and thresholds. For consensus params: rpc_get_consensus.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_estimate_cycles",
+        "title": "Estimate Cycles",
+        "description": "[Read-only] Estimate script execution cycles for fee calculation. For fee rate: rpc_estimate_fee_rate.",
+        "inputSchema": {
+          "properties": {
+            "tx": {
+              "description": "Transaction object to estimate",
+              "type": "object"
+            }
+          },
+          "required": [
+            "tx"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_estimate_fee_rate",
+        "title": "Estimate Fee Rate",
+        "description": "[Read-only] Estimate fee rate in shannons/KB from recent blocks. For cycles: rpc_estimate_cycles.",
+        "inputSchema": {
+          "properties": {
+            "enable_fallback": {
+              "default": true,
+              "description": "Enable fallback algorithm",
+              "type": "boolean"
+            },
+            "estimate_mode": {
+              "description": "Fee estimate mode (optional)",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_calculate_dao_withdraw",
+        "title": "Calculate DAO Withdraw",
+        "description": "[Read-only] Calculate DAO withdrawal amount with accumulated interest. For block economics: rpc_get_block_economics.",
+        "inputSchema": {
+          "properties": {
+            "kind": {
+              "description": "Block hash (string) or out_point of phase 1 tx"
+            },
+            "out_point": {
+              "description": "Reference to the DAO deposit cell",
+              "properties": {
+                "index": {
+                  "type": "string"
+                },
+                "tx_hash": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tx_hash",
+                "index"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "out_point",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_block_economics",
+        "title": "Get Block Economics",
+        "description": "[Read-only] Get block issuance, miner rewards, and fee breakdown. For DAO: rpc_calculate_dao_withdraw.",
+        "inputSchema": {
+          "properties": {
+            "block_hash": {
+              "description": "Block hash to analyze",
+              "type": "string"
+            }
+          },
+          "required": [
+            "block_hash"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_block_median_time",
+        "title": "Get Block Median Time",
+        "description": "[Read-only] Get median time of 37 blocks for time-lock validation. For block header: rpc_get_header.",
+        "inputSchema": {
+          "properties": {
+            "block_hash": {
+              "description": "Block hash indicating highest block in sequence",
+              "type": "string"
+            }
+          },
+          "required": [
+            "block_hash"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_block_filter",
+        "title": "Get Block Filter",
+        "description": "[Read-only] Get BIP-157 block filter for light client SPV. For tx proof: rpc_get_transaction_proof.",
+        "inputSchema": {
+          "properties": {
+            "block_hash": {
+              "description": "Block hash to get filter for",
+              "type": "string"
+            }
+          },
+          "required": [
+            "block_hash"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_get_transaction_proof",
+        "title": "Get Transaction Proof",
+        "description": "[Read-only] Generate Merkle proof for tx inclusion. Verify with rpc_verify_transaction_proof.",
+        "inputSchema": {
+          "properties": {
+            "block_hash": {
+              "description": "Block hash (optional, searches if omitted)",
+              "type": "string"
+            },
+            "tx_hashes": {
+              "description": "Transaction hashes (must be in same block)",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "tx_hashes"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "rpc_verify_transaction_proof",
+        "title": "Verify Transaction Proof",
+        "description": "[Read-only] Verify Merkle proof from rpc_get_transaction_proof. Returns verified tx hashes.",
+        "inputSchema": {
+          "properties": {
+            "tx_proof": {
+              "description": "Transaction proof object",
+              "properties": {
+                "block_hash": {
+                  "type": "string"
+                },
+                "proof": {
+                  "properties": {
+                    "indices": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "lemmas": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "witnesses_root": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "block_hash",
+                "witnesses_root",
+                "proof"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "tx_proof"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "dev_deploy_cell_data",
+        "title": "Deploy Cell Data",
+        "description": "[Modifies state] Deploy a cell with hex-encoded data (max 1KB). Creates on-chain data cell using configured private key.",
+        "inputSchema": {
+          "properties": {
+            "data": {
+              "description": "Hex-encoded data to deploy in the cell (without 0x prefix). Maximum 1KB after decoding.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "data"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "dev_get_address_balance",
+        "title": "Get Address Balance",
+        "description": "[Read-only] Get address balance breakdown (total/free/occupied). For richer address info: rpc_search_cells.",
+        "inputSchema": {
+          "properties": {
+            "address": {
+              "description": "Optional CKB address to check balance for. If omitted, checks the default address from private key.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "dev_get_chain_type",
+        "title": "Get Chain Type",
+        "description": "[Read-only] Get connected CKB node chain type (mainnet/testnet/devnet). Value is fixed for a given node.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "dev_get_genesis_hash",
+        "title": "Get Genesis Hash",
+        "description": "[Read-only] Get the genesis block hash of the connected CKB chain. Value is immutable.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "dev_generate_lock_info",
+        "title": "Generate Lock Info",
+        "description": "[Read-only] Pure computation: derive pubkey, lock arg, lock script, lock hash, and addresses from private key.",
+        "inputSchema": {
+          "properties": {
+            "private_key": {
+              "description": "Private key in hex format (with or without 0x prefix). Required parameter.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "private_key"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "dev_get_lock_info_from_address",
+        "title": "Get Lock Info from Address",
+        "description": "[Read-only] Pure computation: extract lock script, lock hash, and lock arg from a CKB address.",
+        "inputSchema": {
+          "properties": {
+            "address": {
+              "description": "CKB address (testnet or mainnet format)",
+              "type": "string"
+            }
+          },
+          "required": [
+            "address"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "dev_request_testnet_funds",
+        "title": "Request Testnet Funds",
+        "description": "[External call] Request CKB testnet funds from the faucet service. Only works on testnet.",
+        "inputSchema": {
+          "properties": {
+            "address": {
+              "description": "Optional CKB testnet address to receive funds. If omitted, uses the default address from private key.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "dev_get_default_account_info",
+        "title": "Get Default Account Info",
+        "description": "[Read-only] Get server's default account: address, lock script, and capacity breakdown (total/free/occupied).",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "ckb_query_address",
+        "title": "Query Address",
+        "description": "[Read-only] Get complete address state: balance breakdown, recent cells, lock info. Combines search_cells + get_cells_capacity.",
+        "inputSchema": {
+          "properties": {
+            "address": {
+              "description": "CKB address to query. If omitted, uses the default address from private key.",
+              "type": "string"
+            },
+            "cell_limit": {
+              "default": 10,
+              "description": "Maximum number of cells to return",
+              "type": "integer"
+            },
+            "include_cells": {
+              "default": true,
+              "description": "Include recent cells in response",
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "address": {
+              "description": "The queried CKB address",
+              "type": "string"
+            },
+            "capacity": {
+              "description": "Capacity breakdown in shannons",
+              "properties": {
+                "block_hash": {
+                  "type": "string"
+                },
+                "block_number": {
+                  "type": "string"
+                },
+                "capacity": {
+                  "description": "Total capacity in hex",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "cells": {
+              "description": "Recent cells (if include_cells=true)",
+              "properties": {
+                "last_cursor": {
+                  "type": "string"
+                },
+                "objects": {
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "lock_script": {
+              "description": "Lock script derived from address",
+              "properties": {
+                "args": {
+                  "type": "string"
+                },
+                "code_hash": {
+                  "type": "string"
+                },
+                "hash_type": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "required": [
+            "address",
+            "lock_script",
+            "capacity"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "ckb_query_chain_status",
+        "title": "Query Chain Status",
+        "description": "[Read-only] Get chain health snapshot: tip block, sync state, indexer status, mempool info. Single call replaces 4 RPC queries.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "indexer": {
+              "description": "Indexer sync status",
+              "properties": {
+                "block_hash": {
+                  "type": "string"
+                },
+                "block_number": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "mempool": {
+              "description": "Transaction pool info",
+              "properties": {
+                "pending": {
+                  "description": "Pending tx count in hex",
+                  "type": "string"
+                },
+                "proposed": {
+                  "type": "string"
+                },
+                "total_tx_cycles": {
+                  "type": "string"
+                },
+                "total_tx_size": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "sync": {
+              "description": "Node sync state",
+              "properties": {
+                "best_known_block_number": {
+                  "type": "string"
+                },
+                "best_known_block_timestamp": {
+                  "type": "string"
+                },
+                "ibd": {
+                  "description": "Initial block download in progress",
+                  "type": "boolean"
+                }
+              },
+              "type": "object"
+            },
+            "tip": {
+              "description": "Current tip block header",
+              "properties": {
+                "hash": {
+                  "type": "string"
+                },
+                "number": {
+                  "description": "Block height in hex",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "required": [
+            "tip",
+            "sync",
+            "indexer",
+            "mempool"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "ckb_query_transaction",
+        "title": "Query Transaction",
+        "description": "[Read-only] Get transaction with resolved input cells. Shows what was consumed, not just outpoints.",
+        "inputSchema": {
+          "properties": {
+            "tx_hash": {
+              "description": "Transaction hash to query",
+              "type": "string"
+            }
+          },
+          "required": [
+            "tx_hash"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "resolved_inputs": {
+              "description": "Input cells with resolved data",
+              "items": {
+                "properties": {
+                  "cell": {
+                    "description": "Resolved cell data or null if consumed",
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "note": {
+                    "description": "Status note if cell unavailable",
+                    "type": "string"
+                  },
+                  "previous_output": {
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "transaction": {
+              "description": "Full transaction with status",
+              "properties": {
+                "transaction": {
+                  "type": "object"
+                },
+                "tx_status": {
+                  "properties": {
+                    "block_hash": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "proposed",
+                        "committed",
+                        "unknown",
+                        "rejected"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "required": [
+            "transaction",
+            "resolved_inputs"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "ckb_validate_transaction",
+        "title": "Validate Transaction",
+        "description": "[Read-only] Complete pre-submission validation: dry-run, cycle estimation, fee rate check.",
+        "inputSchema": {
+          "properties": {
+            "tx": {
+              "description": "Transaction object to validate",
+              "type": "object"
+            }
+          },
+          "required": [
+            "tx"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "cycles": {
+              "description": "Cycle estimation result",
+              "properties": {
+                "error": {
+                  "description": "Error message if failed",
+                  "type": "string"
+                },
+                "result": {
+                  "description": "Cycles count if success",
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "success"
+              ],
+              "type": "object"
+            },
+            "dry_run": {
+              "description": "Dry-run test result",
+              "properties": {
+                "error": {
+                  "description": "Error message if failed",
+                  "type": "string"
+                },
+                "result": {
+                  "description": "Test result if success",
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "success"
+              ],
+              "type": "object"
+            },
+            "fee_rate": {
+              "description": "Current network fee rate",
+              "properties": {
+                "error": {
+                  "description": "Error message if failed",
+                  "type": "string"
+                },
+                "result": {
+                  "description": "Fee rate if success",
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "success"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "dry_run",
+            "cycles",
+            "fee_rate"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "ckb_query_script_cells",
+        "title": "Query Script Cells",
+        "description": "[Read-only] Find cells by lock or type script with simplified parameters.",
+        "inputSchema": {
+          "properties": {
+            "args": {
+              "description": "Script args (0x-prefixed hex). Optional prefix matching supported.",
+              "type": "string"
+            },
+            "code_hash": {
+              "description": "Script code hash (0x-prefixed hex)",
+              "type": "string"
+            },
+            "hash_type": {
+              "description": "Script hash type",
+              "enum": [
+                "type",
+                "data",
+                "data1",
+                "data2"
+              ],
+              "type": "string"
+            },
+            "limit": {
+              "default": 20,
+              "description": "Maximum number of cells to return",
+              "type": "integer"
+            },
+            "order": {
+              "default": "desc",
+              "description": "Sort order by block number",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            },
+            "script_type": {
+              "description": "Whether to search by lock script or type script",
+              "enum": [
+                "lock",
+                "type"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "script_type",
+            "code_hash",
+            "hash_type"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "cells": {
+              "description": "Matching cells",
+              "properties": {
+                "last_cursor": {
+                  "type": "string"
+                },
+                "objects": {
+                  "items": {
+                    "properties": {
+                      "block_number": {
+                        "type": "string"
+                      },
+                      "out_point": {
+                        "type": "object"
+                      },
+                      "output": {
+                        "type": "object"
+                      },
+                      "output_data": {
+                        "type": "string"
+                      },
+                      "tx_index": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "search_key": {
+              "description": "The search key used for query",
+              "properties": {
+                "script": {
+                  "type": "object"
+                },
+                "script_search_mode": {
+                  "type": "string"
+                },
+                "script_type": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "total_capacity": {
+              "description": "Total capacity of all matching cells",
+              "properties": {
+                "block_hash": {
+                  "type": "string"
+                },
+                "block_number": {
+                  "type": "string"
+                },
+                "capacity": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "required": [
+            "search_key",
+            "cells",
+            "total_capacity"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "search_tools",
+        "title": "Search Tools",
+        "description": "Search available MCP tools by keyword. Returns matching tools with names and descriptions. Use this to discover relevant tools before calling them.",
+        "inputSchema": {
+          "properties": {
+            "limit": {
+              "default": 10,
+              "description": "Maximum number of results to return. Default: 10, max: 50.",
+              "type": "integer"
+            },
+            "query": {
+              "description": "Search keyword(s) to match against tool names and descriptions.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "query": {
+              "description": "The search query used",
+              "type": "string"
+            },
+            "results": {
+              "description": "Matching tools sorted by relevance",
+              "items": {
+                "properties": {
+                  "description": {
+                    "description": "Tool description",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "Tool name for invocation",
+                    "type": "string"
+                  },
+                  "score": {
+                    "description": "Relevance score",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "description",
+                  "score"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "total_matches": {
+              "description": "Total number of matching tools",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "query",
+            "total_matches",
+            "results"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      },
+      {
+        "name": "search_resources",
+        "title": "Search Resources",
+        "description": "Search available documentation resources by keyword. Returns matching resources with URIs and descriptions. Use this to find relevant CKB development documentation.",
+        "inputSchema": {
+          "properties": {
+            "limit": {
+              "default": 10,
+              "description": "Maximum number of results to return. Default: 10, max: 50.",
+              "type": "integer"
+            },
+            "query": {
+              "description": "Search keyword(s) to match against resource names and descriptions.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "query": {
+              "description": "The search query used",
+              "type": "string"
+            },
+            "results": {
+              "description": "Matching resources sorted by relevance",
+              "items": {
+                "properties": {
+                  "description": {
+                    "description": "Resource description",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "Resource name",
+                    "type": "string"
+                  },
+                  "score": {
+                    "description": "Relevance score",
+                    "type": "number"
+                  },
+                  "uri": {
+                    "description": "Resource URI for reading",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "uri",
+                  "name",
+                  "description",
+                  "score"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "total_matches": {
+              "description": "Total number of matching resources",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "query",
+            "total_matches",
+            "results"
+          ],
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      }
+    ]
+  }
+}
