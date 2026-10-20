@@ -15,7 +15,123 @@ server:
 install:
   claude_code: claude mcp add --transport http ckb-ai https://mcp.ckbdev.com/ckbai
   codex: codex mcp add ckb-ai --url https://mcp.ckbdev.com/ckbai
-tools: []
+tools:
+- name: rpc_get_block
+  description: '[Read-only] Retrieve complete block with all transactions. For header only: rpc_get_header.'
+- name: rpc_get_block_by_number
+  description: '[Read-only] Retrieve complete block by number. For header only: rpc_get_header_by_number.'
+- name: rpc_get_header
+  description: '[Read-only] Retrieve block header without transactions. For full block: rpc_get_block.'
+- name: rpc_get_header_by_number
+  description: '[Read-only] Retrieve block header by number. For full block: rpc_get_block_by_number.'
+- name: rpc_get_transaction
+  description: '[Read-only] Retrieve transaction data and status by hash. For pending txs: rpc_get_pool_tx_detail.'
+- name: rpc_get_block_hash
+  description: '[Read-only] Convert block number to hash. For full block data: rpc_get_block_by_number.'
+- name: rpc_get_tip_header
+  description: '[Read-only] Get latest block header from chain tip. For block number only: rpc_get_tip_block_number.'
+- name: rpc_get_tip_block_number
+  description: '[Read-only] Get current chain height. For full header: rpc_get_tip_header.'
+- name: rpc_get_current_epoch
+  description: '[Read-only] Get current epoch number, start block, and length. For historical: rpc_get_epoch_by_number.'
+- name: rpc_get_epoch_by_number
+  description: '[Read-only] Get historical epoch details. For current epoch: rpc_get_current_epoch.'
+- name: rpc_get_live_cell
+  description: '[Read-only] Get single cell by outpoint. For bulk queries: rpc_search_cells.'
+- name: rpc_get_fork_block
+  description: '[Read-only] Get orphaned block from chain reorganization. For canonical blocks: rpc_get_block.'
+- name: rpc_get_indexer_tip
+  description: '[Read-only] Get indexer sync status. Check before using rpc_search_cells or rpc_search_transactions.'
+- name: rpc_search_cells
+  description: '[Read-only] Search cells by script criteria with full filter control. For total capacity:
+    rpc_get_cells_capacity.'
+- name: rpc_search_transactions
+  description: '[Read-only] Search transaction history by script. For single tx: rpc_get_transaction.'
+- name: rpc_get_cells_capacity
+  description: '[Read-only] Get total capacity of matching cells. For cell details: rpc_search_cells.'
+- name: rpc_submit_transaction
+  description: '[Modifies state] Submit transaction to network for inclusion. Validate first with rpc_test_transaction.'
+- name: rpc_test_transaction
+  description: '[Read-only] Dry-run transaction validation without broadcasting. Use before rpc_submit_transaction.'
+- name: rpc_get_node_info
+  description: '[Read-only] Get node version, protocols, and addresses. For sync status: rpc_get_sync_state.'
+- name: rpc_get_sync_state
+  description: '[Read-only] Get chain sync progress and IBD status. For node info: rpc_get_node_info.'
+- name: rpc_get_peers
+  description: '[Read-only] Get connected peer addresses and protocols. For node status: rpc_get_node_info.'
+- name: rpc_get_pool_info
+  description: '[Read-only] Get mempool size, limits, and fee statistics. For pending txs: rpc_get_pool_transactions.'
+- name: rpc_get_pool_ready
+  description: '[Read-only] Check if mempool is ready. Call before rpc_submit_transaction.'
+- name: rpc_get_pool_transactions
+  description: '[Read-only] List all pending transaction hashes. For tx details: rpc_get_pool_tx_detail.'
+- name: rpc_get_pool_tx_detail
+  description: '[Read-only] Get pending transaction details including fee and ancestors. For committed:
+    rpc_get_transaction.'
+- name: rpc_get_blockchain_info
+  description: '[Read-only] Get chain type (mainnet/testnet), difficulty, and alerts. For consensus: rpc_get_consensus.'
+- name: rpc_get_consensus
+  description: '[Read-only] Get consensus rules, block intervals, and reward parameters. For forks: rpc_get_deployments.'
+- name: rpc_get_deployments
+  description: '[Read-only] Get soft fork activation status and thresholds. For consensus params: rpc_get_consensus.'
+- name: rpc_estimate_cycles
+  description: '[Read-only] Estimate script execution cycles for fee calculation. For fee rate: rpc_estimate_fee_rate.'
+- name: rpc_estimate_fee_rate
+  description: '[Read-only] Estimate fee rate in shannons/KB from recent blocks. For cycles: rpc_estimate_cycles.'
+- name: rpc_calculate_dao_withdraw
+  description: '[Read-only] Calculate DAO withdrawal amount with accumulated interest. For block economics:
+    rpc_get_block_economics.'
+- name: rpc_get_block_economics
+  description: '[Read-only] Get block issuance, miner rewards, and fee breakdown. For DAO: rpc_calculate_dao_withdraw.'
+- name: rpc_get_block_median_time
+  description: '[Read-only] Get median time of 37 blocks for time-lock validation. For block header: rpc_get_header.'
+- name: rpc_get_block_filter
+  description: '[Read-only] Get BIP-157 block filter for light client SPV. For tx proof: rpc_get_transaction_proof.'
+- name: rpc_get_transaction_proof
+  description: '[Read-only] Generate Merkle proof for tx inclusion. Verify with rpc_verify_transaction_proof.'
+- name: rpc_verify_transaction_proof
+  description: '[Read-only] Verify Merkle proof from rpc_get_transaction_proof. Returns verified tx hashes.'
+- name: dev_deploy_cell_data
+  description: '[Modifies state] Deploy a cell with hex-encoded data (max 1KB). Creates on-chain data
+    cell using configured private key.'
+- name: dev_get_address_balance
+  description: '[Read-only] Get address balance breakdown (total/free/occupied). For richer address info:
+    rpc_search_cells.'
+- name: dev_get_chain_type
+  description: '[Read-only] Get connected CKB node chain type (mainnet/testnet/devnet). Value is fixed
+    for a given node.'
+- name: dev_get_genesis_hash
+  description: '[Read-only] Get the genesis block hash of the connected CKB chain. Value is immutable.'
+- name: dev_generate_lock_info
+  description: '[Read-only] Pure computation: derive pubkey, lock arg, lock script, lock hash, and addresses
+    from private key.'
+- name: dev_get_lock_info_from_address
+  description: '[Read-only] Pure computation: extract lock script, lock hash, and lock arg from a CKB
+    address.'
+- name: dev_request_testnet_funds
+  description: '[External call] Request CKB testnet funds from the faucet service. Only works on testnet.'
+- name: dev_get_default_account_info
+  description: '[Read-only] Get server''s default account: address, lock script, and capacity breakdown
+    (total/free/occupied).'
+- name: ckb_query_address
+  description: '[Read-only] Get complete address state: balance breakdown, recent cells, lock info. Combines
+    search_cells + get_cells_capacity.'
+- name: ckb_query_chain_status
+  description: '[Read-only] Get chain health snapshot: tip block, sync state, indexer status, mempool
+    info. Single call replaces 4 RPC queries.'
+- name: ckb_query_transaction
+  description: '[Read-only] Get transaction with resolved input cells. Shows what was consumed, not just
+    outpoints.'
+- name: ckb_validate_transaction
+  description: '[Read-only] Complete pre-submission validation: dry-run, cycle estimation, fee rate check.'
+- name: ckb_query_script_cells
+  description: '[Read-only] Find cells by lock or type script with simplified parameters.'
+- name: search_tools
+  description: Search available MCP tools by keyword. Returns matching tools with names and descriptions.
+    Use this to discover relevant tools before calling them.
+- name: search_resources
+  description: Search available documentation resources by keyword. Returns matching resources with URIs
+    and descriptions. Use this to find relevant CKB development documentation.
 deployment:
   mode: remote
   endpoint: https://mcp.ckbdev.com/ckbai
@@ -49,3 +165,4 @@ tool_quality:
   scored: false
   note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
     from Glimind's agent-readiness audit.
+tools_count: 51
